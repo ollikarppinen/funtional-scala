@@ -1,0 +1,42 @@
+package recfun
+import common._
+import scala.annotation.tailrec
+
+object Main {
+  def main(args: Array[String]) {
+    println("Pascal's Triangle")
+    for (row <- 0 to 10) {
+      for (col <- 0 to row)
+        print(pascal(col, row) + " ")
+      println()
+    }
+  }
+
+  /**
+   * Exercise 1
+   */
+  def pascal(c: Int, r: Int): Int = {
+    @tailrec def row(i: Int, v: Vector[Int]): Vector[Int] = i match {
+      case 0 => v
+      case _ => {
+        val newV = 1 +: v.sliding(2).filter(_.size > 1).map(_.sum).toVector :+ 1
+        row(i - 1, newV)
+      }
+    }
+    row(r)(c)
+  }
+  
+  for (i <- 0 to 10; j <- 0 to i) {
+    pascal(i, j)
+  }
+
+  /**
+   * Exercise 2
+   */
+  def balance(chars: List[Char]): Boolean = ???
+
+  /**
+   * Exercise 3
+   */
+  def countChange(money: Int, coins: List[Int]): Int = ???
+}

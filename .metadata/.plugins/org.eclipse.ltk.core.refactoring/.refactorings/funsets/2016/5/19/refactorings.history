@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;submission&apos; to &apos;main&apos;&#x0A;- Original project: &apos;funsets&apos;&#x0A;- Destination element: &apos;main&apos;&#x0A;- Original element: &apos;submission&apos;&#x0A;- Update references to refactored element" description="Move folder" element1="submission" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1462532040040" target="src/main" units="0" version="1.0"/>
+</session>

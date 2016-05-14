@@ -1,0 +1,24 @@
+package week3
+
+object insets {
+
+}
+
+abstract class IntSet {
+    def incl(x: Int): Boolean
+    def contains(x: Int): Boolean
+}
+
+class Empty extends IntSet {
+    def contains(x: Int): Boolean = false
+    def incl(x: Int): IntSet = new NonEmpty(x, new Empty, new Empty)
+}
+
+class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
+  def contains(x: Int): Boolean =
+    if (x < elem) left contains x
+    else if (sx > elem) right contains x
+    else true
+
+
+}

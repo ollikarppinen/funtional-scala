@@ -161,11 +161,11 @@ object Huffman {
      * the resulting list of characters.
      */
     def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
-        def inner(t: CodeTree, b: List[Bit]): List[Char] = t match {
-            case Leaf(c, _) => if (b.isEmpty) List(c) else c :: inner(tree, b)
-            case Fork(l, r, _, _) => if (b.head == 0) inner(l, b.tail) else inner(r, b.tail)
+        @tailrec def inner(tree: CodeTree, bs: List[Bit], res: List[Char]): List[Char] = (tree, bs.head) match {
+            case (Fork(l, r)
+        
         }
-        inner(tree, bits)
+        inner(tree, bits, Nil)
     }
 
     /**
@@ -184,8 +184,7 @@ object Huffman {
     /**
      * Write a function that returns the decoded secret
      */
-    def decodedSecret: List[Char] = decode(frenchCode, secret)
-    println(decodedSecret.toString)
+    def decodedSecret: List[Char] = ???
 
     // Part 4a: Encoding using Huffman tree
 

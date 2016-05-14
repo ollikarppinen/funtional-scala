@@ -162,10 +162,11 @@ object Huffman {
      */
     def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
         def inner(t: CodeTree, b: List[Bit]): List[Char] = t match {
-            case Leaf(c, _) => if (b.isEmpty) List(c) else c :: inner(tree, b)
-            case Fork(l, r, _, _) => if (b.head == 0) inner(l, b.tail) else inner(r, b.tail)
+            case Leaf(c, _) if b.isEmpty => List(c)
+            case Leaf(c, _) => c :: inner(tree, b.tail)
+        
         }
-        inner(tree, bits)
+        inner(t, b)
     }
 
     /**
